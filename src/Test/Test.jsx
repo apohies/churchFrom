@@ -6,11 +6,14 @@ import Grid from '@mui/material/Grid';
 import Card from '@mui/material/Card';
 import CardActionArea from '@mui/material/CardActionArea';
 import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
+import { useSelector, useDispatch } from "react-redux";
+import { changeName } from '../redux/userSlice';
 
 function Test(props) {
 
   const { title , date , description } = props;
+  const name = useSelector((state)=>state.user.name);
+  const dispatch = useDispatch();
 
   return (
     <Grid item xs={12} md={6}>
@@ -27,7 +30,14 @@ function Test(props) {
             {description}
           </Typography>
           <Typography variant="subtitle1" color="primary">
-            Continue reading...
+            <p> info from redux : {name}</p>
+
+            <input
+            type='text'
+            value ={name}
+            onChange={(event)=>dispatch(changeName(event.target.value))}
+            />
+
           </Typography>
         </CardContent>
       </Card>
