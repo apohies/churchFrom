@@ -66,6 +66,7 @@ export default function SignIn() {
     console.log(response.data)
 
     dispatch(AddToken(response.data))
+    localStorage.setItem("token",response.data)
 
   }).catch((error)=>{
 
