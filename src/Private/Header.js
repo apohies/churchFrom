@@ -6,10 +6,17 @@ import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
 import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
+import { useNavigate  } from 'react-router-dom';
 
 function Header(props) {
   const { sections, title } = props;
+  const history = useNavigate();
 
+  const logout = () => {
+
+    localStorage.setItem('token', '');
+    window.location.reload();
+  }
   return (
     <React.Fragment>
       <Toolbar sx={{ borderBottom: 1, borderColor: 'divider' }}>
@@ -27,7 +34,7 @@ function Header(props) {
         <IconButton>
           <SearchIcon />
         </IconButton>
-        <Button variant="outlined" size="small">
+        <Button variant="outlined" size="small" onClick={logout}>
           Sign up
         </Button>
       </Toolbar>
@@ -40,6 +47,7 @@ function Header(props) {
           <Link
             color="inherit"
             noWrap
+            onClick={()=> history('teo')}
             key={section.title}
             variant="body2"
             href={section.url}

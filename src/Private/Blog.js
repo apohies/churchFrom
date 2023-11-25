@@ -17,6 +17,7 @@ import post2 from './blog-post.2.md';
 import post3 from './blog-post.3.md';
 import { Routes, Route } from "react-router-dom"
 import Test from '../Test/Test';
+import Tablix from '../core/Tablix';
 
 const sections = [
   { title: 'Technology', url: '#' },
@@ -96,24 +97,16 @@ export default function Blog() {
         <Header title="Blog" sections={sections} />
         <main>
           <MainFeaturedPost post={mainFeaturedPost} />
-          <Grid container spacing={4}>
-            {featuredPosts.map((post) => (
-              <FeaturedPost key={post.title} post={post} />
-            ))}
-          </Grid>
+        
           <Grid container spacing={5} sx={{ mt: 3 }}>
          
+         <Tablix/>
           <Routes>
             <Route path="/teo" element={ <Test title="Prueba Redux" date="31/10/2023" description="mame"/> } />
        
             </Routes>
 
-            <Sidebar
-              title={sidebar.title}
-              description={sidebar.description}
-              archives={sidebar.archives}
-              social={sidebar.social}
-            />
+         
           </Grid>
         </main>
       </Container>
