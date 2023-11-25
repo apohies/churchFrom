@@ -1,4 +1,4 @@
-import * as React from 'react';
+
 import CssBaseline from '@mui/material/CssBaseline';
 import Grid from '@mui/material/Grid';
 import Container from '@mui/material/Container';
@@ -18,6 +18,9 @@ import post3 from './blog-post.3.md';
 import { Routes, Route } from "react-router-dom"
 import Test from '../Test/Test';
 import Tablix from '../core/Tablix';
+
+import React , {useEffect, useState} from 'react';
+import Mongos from '../Api/Mongos';
 
 const sections = [
   { title: 'Technology', url: '#' },
@@ -89,7 +92,32 @@ const sidebar = {
 // TODO remove, this demo shouldn't need to reset the theme.
 const defaultTheme = createTheme();
 
+const header = ["Usuario", "Correo", "Password"];
+const body = [["pedro", "juan", "diego"], ["pedro", "juan", "diego"], ["pedro", "juan", "diego"]];
+ 
+
+
 export default function Blog() {
+
+  const [mongos, setMongos] = useState([]);
+
+  const getAllMongos = async () => {  
+    try {
+      const response = await Mongos.getAllMongos();
+      setMongos(response.data.result);
+     
+    } catch (error) {
+  
+    }
+  }
+  
+
+  useEffect(() => {
+
+    getAllMongos();
+   
+  }, []);
+
   return (
     <ThemeProvider theme={defaultTheme}>
       <CssBaseline />
@@ -100,7 +128,7 @@ export default function Blog() {
         
           <Grid container spacing={5} sx={{ mt: 3 }}>
          
-         <Tablix/>
+         { mongos.length > 0 ? <Tablix headers={header} data={mongos}></Tablix> : <div>nadita</div>}
           <Routes>
             <Route path="/teo" element={ <Test title="Prueba Redux" date="31/10/2023" description="mame"/> } />
        
