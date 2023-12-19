@@ -18,6 +18,7 @@ import post3 from './blog-post.3.md';
 import { Routes, Route } from "react-router-dom"
 import Test from '../Test/Test';
 import Tablix from '../core/Tablix';
+import Scan from './Scan';
 
 const sections = [
   { title: 'Technology', url: '#' },
@@ -100,9 +101,10 @@ export default function Blog() {
         
           <Grid container spacing={5} sx={{ mt: 3 }}>
          
-         <Tablix/>
+         {/* <Tablix/> */}
           <Routes>
             <Route path="/teo" element={ <Test title="Prueba Redux" date="31/10/2023" description="mame"/> } />
+            <Route path="/Scan" element={ <Scan></Scan> } />
        
             </Routes>
 

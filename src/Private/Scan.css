@@ -1,0 +1,11 @@
+
+.form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 500px;
+    
+    order: 2;
+    align-self: center;
+    padding: 10px;
+  }

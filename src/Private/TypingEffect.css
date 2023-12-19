@@ -1,0 +1,9 @@
+.typing-effect {
+    font-family: monospace;
+    font-size: 1.2em;
+    padding: 10px;
+    border: 1px solid #ccc;
+    margin: 20px 0;
+    display: inline-block;
+    overflow: hidden;
+  }

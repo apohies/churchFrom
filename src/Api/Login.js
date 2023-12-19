@@ -9,5 +9,17 @@ export default{
 
     },
 
+    scan(form){
+
+        return Api().post("/Map/mensaje",form);
+
+    },
+
+    resultScan(form){
+
+        return Api().post("/Map/resultado",form);
+
+    },
+
   
 }
